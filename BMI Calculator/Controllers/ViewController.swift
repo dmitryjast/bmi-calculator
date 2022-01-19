@@ -44,6 +44,12 @@ class ViewController: UIViewController {
         
         print ("BMI Result: \(bmiResult)")
         
+        let secondVS = SecondViewController()
+        
+        secondVS.bmiValue = String(format: "%.1f", bmiResult)
+        
+        self.present(secondVS, animated: true, completion: nil)
+        
         
     }
     
