@@ -1,38 +1,41 @@
 //
 //  CalculatorBrain.swift
-//  BMI Calculator
+//  // BMI Calculator (traning)
 //
-//  Created by Dmitry on 2/6/22.
-//  Copyright © 2022 Angela Yu. All rights reserved.
+//  Created by Dmitry Y on 16/02/2022.
+//  Copyright © 2022 Dmitry Y. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 struct CalculateBrain {
     
-    var bmiResult: Float?
-    
-    
-    
-    mutating func calculateBMI(height: Float, weight: Float) {
-        bmiResult = weight / (height * height)
-    }
+    var bmiResult: BMI?
     
     func getBMIValue() -> String {
-        let bmiValue = String(format: "%.1f", bmiResult)
+        let bmiValue = String(format: "%.1f", bmiResult?.value ?? 0.0)
         return bmiValue
     }
     
+    func getAdvice() -> String {
+        return bmiResult?.advice ?? "Try else"
+    }
     
-    /*
-    
-    var bmiValue = "0.0"
-    
-    let bmiResult = weight / (height * height) // else option pow(height, 2)
-    
-    bmiValue = String(format: "%.1f", bmiResult)
-    
-    print ("BMI Result: \(bmiResult)")
-     */
+    func getColor() -> UIColor {
+        return bmiResult?.color ?? UIColor.blue
+    }
+
+    mutating func calculateBMI(height: Float, weight: Float) {
+        let bmiValueFirst = weight / (height * height)
+
+        if bmiValueFirst < 18.5 {
+            bmiResult = BMI(value: bmiValueFirst, advice: "Eat more pies!", color: UIColor.systemOrange)
+        } else if 18.5...24.9 ~= bmiValueFirst {
+            bmiResult = BMI(value: bmiValueFirst, advice: "Fit as a fiddle!", color: UIColor.systemGreen)
+        } else {
+            bmiResult = BMI(value: bmiValueFirst, advice: "Eat less pies!", color: UIColor.systemRed)
+        }
+    }
     
 }

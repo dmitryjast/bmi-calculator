@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  BMI Calculator
+//  // BMI Calculator (traning)
 //
-//  Created by Angela Yu on 21/08/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
+//  Created by Dmitry Y on 16/02/2022.
+//  Copyright © 2022 Dmitry Y. All rights reserved.
 //
 
 import UIKit
@@ -42,8 +42,6 @@ class CalculateViewController: UIViewController {
         
         performSegue(withIdentifier: "goToResult", sender: self)
         
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +49,8 @@ class CalculateViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             
             destinationVC.bmiValue = calculatorBrain.getBMIValue()
+            destinationVC.advice = calculatorBrain.getAdvice()
+            destinationVC.color = calculatorBrain.getColor()
         }
     }
     
