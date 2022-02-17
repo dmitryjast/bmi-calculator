@@ -26,6 +26,8 @@ class ResultViewController: UIViewController {
         
     }
     
+    // Back to the first screen
+    
     @IBAction func recalculatePressed(_ sender: UIButton) {
         
         dismiss(animated: true, completion: nil)

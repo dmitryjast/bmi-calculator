@@ -22,6 +22,7 @@ class CalculateViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // Sliders
     
     @IBAction func sliderHeightTrigger(_ sender: UISlider) {
         let height = String(format:"%.2f", sender.value)
@@ -33,6 +34,8 @@ class CalculateViewController: UIViewController {
         weightLabel.text = "\(weight)Kg"
     }
     
+    // Calculation button
+    
     @IBAction func calculateButton(_ sender: UIButton) {
         
         let height = heightSlider.value
@@ -43,6 +46,8 @@ class CalculateViewController: UIViewController {
         performSegue(withIdentifier: "goToResult", sender: self)
         
     }
+    
+    // Passing data to the second screen
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
